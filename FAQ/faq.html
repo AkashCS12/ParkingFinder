@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Parking Finder</title>
+ <!-- <link rel="stylesheet" href="faq.css"> -->
+ <style>
+     body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000;
+    color: #fff;
+    background-image: url('../Resources/bg6.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+  
+  .container {
+    padding: 2cm;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1cm;
+  }
+  
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    font-weight: normal;
+    color: #fff;
+    margin: 0;
+  }
+  
+  nav {
+    text-align: center;
+  }
+  
+  .nav-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: 900;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0.5cm 15px 0 5px;
+  }
+  
+  .signup-btn {
+    border: 3px solid #fff;
+    border-radius: 50px;
+    background: transparent;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px 25px;
+    cursor: pointer;
+    margin-left: -1.5cm;
+  }
+  
+  .faq-container {
+    padding: 2cm;
+  }
+  
+  .faq-box {
+    background-color: rgba(0, 0, 0, 0.441);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .faq-item {
+    margin-bottom: 60px;
+  }
+  
+  .question {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .answer {
+    font-size: 20px;
+    color: rgb(6, 219, 6);
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    left: -50%;
+}
+.dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: white;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 100px;
+}
+.dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+.user-icon {
+position: relative;
+display: inline-block;
+cursor: pointer;
+}
+.user-icon:hover .dropdown-content {
+display: block;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1033px) and (max-width: 1300px) {
+  .nav-button {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (max-width: 432px) {
+  .suggestions {
+    max-height: 80px;
+    width: 80%;
+    left: 50%;
+    margin-top: 45px !important;
+    border-radius: 10px;
+    overflow-y: scroll;
+  }
+  
+  .suggestion-item {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .nav-button.hamburger {
+    display: none;
+  }
+  .sidebar-content{
+    display: none;
+  }
+
+  .close-btn{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+    
+      .faq-container {
+    padding: 2cm 1cm;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .faq-box {
+    width: 90%;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .faq-item {
+    margin-bottom: 30px;
+    max-width: 100%;
+  }
+
+  .question {
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+
+  .answer {
+    font-size: 18px;
+  }
+
+  .nav-button,
+  .signup-btn,
+  .logo,
+  body,
+  .container {
+    font-size: 18px;
+    padding: 8px 15px;
+    width: auto;
+    margin-left: 0;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-button {
+    margin: 0.5cm 0;
+  }
+
+  .signup-btn {
+    margin-top: 0.1cm !important;
+    margin-left: auto;
+  }
+
+  .user-container {
+    display: none;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #333;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+
+  .sidebar-content {
+    padding: 30px 20px;
+  }
+  
+  nav {
+    display: none;
+  }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin: 0.5cm 0;
+  }
+
+  .signup-btn {
+    margin-top: -1.5cm;
+    margin-left: auto;
+  }  
+
+  header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 900;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 1cm 15px 0 10px;
+}
+
+.sidebar-content button {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #555;
+}
+
+.sidebar-content button:last-child {
+  border-bottom: none;
+}
+
+.sidebar-content button:hover {
+  background-color: #333;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+body {
+  scrollbar-width: thin; 
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #333;
+}
+  
+ </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Orbitron:800">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <button class="nav-button hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="logo">Parking Finder</div>
+      <nav>
+          <button class="nav-button" onclick="redirectToHome()">Home</button>
+          <button class="nav-button" onclick="redirectToMap()">Book Parking</button>
+          <button class="nav-button" onclick="redirectToAbout()">About Us</button>
+          <button class="nav-button" onclick="redirectToContact()">Contact Us</button>
+      </nav>
+      <div class="user-container">
+          <div class="user-icon">
+              <img src="../Resources/account.png" alt="User Icon">
+              <div class="dropdown-content">
+                  <button onclick="profile()">Account Information</button>
+                  <button onclick="logout()">Logout</button>
+              </div>
+          </div>
+      </div>
+      <button class="signup-btn" onclick="redirectToSignUp()">Sign Up</button>
+  </header>
+  <div class="sidebar" id="sidebar">
+      <button class="close-btn" onclick="closeSidebar()">×</button> 
+      <div class="sidebar-content">
+        <button class="nav-button" onclick="redirectToHome()">Home</button>
+        <button class="nav-button" onclick="redirectToMap()">Book Parking</button>
+        <button class="nav-button" onclick="redirectToAbout()">About Us</button>
+        <button class="nav-button" onclick="redirectToContact()">Contact Us</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-container">
+    <h1>Frequently Asked Questions (FAQ)</h1>
+    <div class="faq-box">
+      <div class="faq-item">
+        <h2 class="question">Q: How can I reserve a parking spot?</h2>
+        <p class="answer">A: To reserve a parking spot, simply navigate to our "Book Parking" page and follow the instructions to select your desired location, date, and time.</p>
+      </div>
+      <div class="faq-item">
+        <h2 class="question">Q: What payment methods do you accept?</h2>
+        <p class="answer">A: We accept various payment methods including credit/debit cards, PayPal, and mobile payment options. You can choose your preferred method during the checkout process.</p>
+      </div>
+      <div class="faq-item">
+        <h2 class="question">Q: Is there a cancellation policy?</h2>
+        <p class="answer">A: Yes, we have a cancellation policy in place. You can cancel your parking reservation for a full refund up to 24 hours before your scheduled arrival time.</p>
+      </div>
+      <div class="faq-item">
+        <h2 class="question">Q: Can I receive a receipt for my parking reservation?</h2>
+        <p class="answer">A: Yes, you will receive a confirmation email upon completing your booking, which serves as your receipt. You will also recieve a Confirmation Number on your Phone.</p>
+      </div>
+      <div class="faq-item">
+        <h2 class="question">Q: Can I cancel my parking reservation if my plans change?</h2>
+        <p class="answer">A: Yes, you can cancel your parking reservation according to the cancellation policy outlined during the booking process. Refund eligibility and any applicable cancellation fees will be clearly stated in the terms and conditions.</p>
+      </div>
+    </div>
+  </div>
+
+ <!-- <script src="faq.js"></script> -->
+  <script>
+      function redirectToSignUp() {
+    window.location.href = "../SignUp/sign-up.html";
+  }
+  function redirectToHome() {
+    window.location.href = "../index.html";
+  }
+  function redirectToAbout() {
+    window.location.href = "../AboutUs/about.html";
+  }
+  function redirectToMap() {
+    window.location.href = "../LargeMap.html";
+  }
+
+
+  window.onload = function() {
+      var loggedIn = getCookie("loggedIn");
+      var userContainer = document.querySelector('.user-container');
+      var signUpBtn = document.querySelector('.signup-btn');
+      if (loggedIn === "true") {
+          signUpBtn.style.display = "none";
+          userContainer.style.display = "block";
+      } else {
+          signUpBtn.style.display = "block";
+          userContainer.style.display = "none";
+      }
+  }
+
+  function getCookie(name) {
+      var cookieArr = document.cookie.split(';');
+      for(var i = 0; i < cookieArr.length; i++) {
+          var cookiePair = cookieArr[i].split('=');
+          if(name == cookiePair[0].trim()) {
+              return decodeURIComponent(cookiePair[1]);
+          }
+      }
+      return null;
+  }
+
+  function setCookie(name, value) {
+      document.cookie = name + "=" + value + ";path=/";
+  }
+
+  function clearCookie(name) {
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+  }
+
+  function logout() {
+      clearCookie("loggedIn");
+      window.location.reload();
+  }
+
+  function profile() {
+      window.location.href="../Account/account.html";
+  }
+  function redirectToContact() {
+    window.location.href="../ContactUs/contact.html";
+}
+
+function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+}
+  
+  function closeSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    sidebar.classList.remove('active');
+  }
+  
+          document.addEventListener('DOMContentLoaded', () => {
+            var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+            if(disclaimer) {
+                disclaimer.remove();
+            }
+        });
+
+  </script>
+
+</body>
+</html>

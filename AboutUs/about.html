@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Parking Finder</title>
+ <!-- <link rel="stylesheet" href="about.css"> -->
+ <style>
+     body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000;
+  color: #fff;
+  background-image: url('../Resources/bg6.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 2cm;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1cm;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+  color: #fff;
+  margin: 0;
+}
+
+nav {
+  text-align: center;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 900;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 0.5cm 15px 0 5px;
+}
+
+.signup-btn {
+  border: 3px solid #fff;
+  border-radius: 50px;
+  background: transparent;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 10px 25px;
+  cursor: pointer;
+  margin-left: -1.5cm;
+}
+
+.about-container {
+  text-align: center;
+  margin-top: 2cm;
+  padding: 0 2cm;
+}
+
+.about-text {
+  font-size: 24px;
+  line-height: 1.6;
+  margin-bottom: 2cm;
+  padding-bottom: 0.5cm;
+  color: #ddd;
+}
+
+.objective-heading {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1cm;
+}
+
+.objective-list {
+  font-size: 20px;
+  color: #ddd;
+  text-align: left;
+  margin-left: 0;
+  padding-left: 2cm;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  padding-bottom: 2cm;
+  padding-top: 2cm;
+  background: rgba(0, 0, 0, 0.279);
+}
+
+.team-members {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2cm;
+}
+
+.team-member {
+  text-align: center;
+  width: 23%;
+}
+
+.team-member-photo {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 1cm;
+  border-radius: 30%;
+}
+
+
+.team-member-details {
+  font-size: 18px;
+  color: #ddd;
+  font-weight: 900;
+  padding-bottom: 4cm;
+}
+
+.team-heading {
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1cm;
+  padding-top: 4cm;
+  padding-bottom: 2cm;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+  left: -50%;
+}
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: white;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 100px;
+}
+.dropdown-content button:hover {
+  background-color: #f1f1f1;
+}
+.user-icon {
+position: relative;
+display: inline-block;
+cursor: pointer;
+}
+.user-icon:hover .dropdown-content {
+display: block;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1033px) and (max-width: 1300px) {
+  .nav-button {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .nav-button.hamburger {
+    display: none;
+  }
+  .sidebar-content{
+    display: none;
+  }
+
+  .close-btn{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .team-member {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+    
+  .about-container {
+    width: 90%;
+    margin: 0;
+    padding: 0 1rem;
+  }
+
+  .about-text {
+    font-size: 18px;
+  }
+
+  .objective-list {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  
+  .objective-list h3 {
+    margin-top: 0;
+  }
+
+  .team-members {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .team-member {
+    width: 45%;
+    margin-bottom: 2rem;
+    margin-right: 20px;
+  }
+
+  .team-member-photo {
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-button,
+  .signup-btn,
+  .logo,
+  body,
+  .container {
+    font-size: 18px;
+    padding: 8px 15px;
+    width: auto;
+    margin-left: 0;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-button {
+    margin: 0.5cm 0;
+  }
+
+  .signup-btn {
+    margin-top: 0.1cm !important;
+    margin-left: auto;
+  }
+
+  .user-container {
+    display: none;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #333;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+
+  .sidebar-content {
+    padding: 30px 20px;
+  }
+  
+  nav {
+    display: none;
+  }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin: 0.5cm 0;
+  }
+
+  .signup-btn {
+    margin-top: -1.5cm;
+    margin-left: auto;
+  }  
+
+  header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 900;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 1cm 15px 0 10px;
+}
+
+.sidebar-content button {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #555;
+}
+
+.sidebar-content button:last-child {
+  border-bottom: none;
+}
+
+.sidebar-content button:hover {
+  background-color: #333;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+body {
+  scrollbar-width: thin; 
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+ </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Orbitron:800">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <button class="nav-button hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="logo">Parking Finder</div>
+      <nav>
+          <button class="nav-button" onclick="redirectToHome()">Home</button>
+          <button class="nav-button" onclick="redirectToMap()">Book Parking</button>
+          <button class="nav-button" onclick="redirectToContact()">Contact Us</button>
+          <button class="nav-button" onclick="redirectToFAQ()">FAQ</button>
+      </nav>
+      <div class="user-container">
+          <div class="user-icon">
+              <img src="../Resources/account.png" alt="User Icon">
+              <div class="dropdown-content">
+                  <button onclick="profile()">Account Information</button>
+                  <button onclick="logout()">Logout</button>
+              </div>
+          </div>
+      </div>
+      <button class="signup-btn" onclick="redirectToSignUp()">Sign Up</button>
+  </header>
+  <div class="sidebar" id="sidebar">
+      <button class="close-btn" onclick="closeSidebar()">×</button> 
+      <div class="sidebar-content">
+        <button class="nav-button" onclick="redirectToHome()">Home</button>
+        <button class="nav-button" onclick="redirectToMap()">Book Parking</button>
+        <button class="nav-button" onclick="redirectToContact()">Contact Us</button>
+        <button class="nav-button" onclick="redirectToFAQ()">FAQ</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-container">
+    <div class="about-text">
+      <p>Welcome to the future of hassle-free parking! In the bustling urban landscape, finding the perfect parking spot can be a time-consuming and frustrating task. Fortunately, your search for stress-free parking ends here. Welcome to our innovative parking finder website, where convenience meets efficiency.</p>
+      <p>Navigating through the chaos of urban parking has never been easier. Our platform is designed to revolutionize your parking experience, offering a seamless solution to locate, reserve, and manage parking spaces with just a few clicks. Whether you're a daily commuter, an occasional visitor, or a traveler exploring a new city, our parking finder website is your trusted companion.</p>
+    </div>
+
+    <div class="objective-heading">Our Objectives:</div>
+    <ul class="objective-list">
+      <h3>Real-Time Parking Availability</h3>
+      <li>Utilize sensors, cameras, or user-reported data to provide real-time information on parking slot availability.</li>
+      <li>Integrate with parking management systems or smart city infrastructure for accurate data.</li>
+      <br>
+      <h3>Slot Reservation System</h3>
+      <li>Enable users to search for available parking slots based on location, time, and preferences.</li>
+      <li>Implement a reservation system allowing users to book and pay for parking slots in advance.</li>
+      <br>
+      <h3>Navigation and Directions</h3>
+      <li>Integrate with navigation services (Google Maps, Waze, etc.) to provide users with turn-by-turn directions to their reserved parking spot.</li>
+      <br>
+      <h3>Payment Integration</h3>
+      <li>Integrate secure payment gateways to facilitate transactions for parking reservations.</li>
+      <br>
+      <h3>Notification System:</h3>
+      <li>Implement a notification system to alert users about successful reservations.</li>
+    </ul>
+
+    <h2 class="team-heading">Our Team Details:</h2>
+    <div class="team-members">
+      <div class="team-member">
+        <img src="../AboutUs/Team/akash.jpg" alt="Akash Gupta" class="team-member-photo">
+        <p class="team-member-details">Team Leader / Project Developer: Akash Gupta</p>
+      </div>
+      
+      <div class="team-member">
+        <img src="../AboutUs/Team/abhishek.jpg" alt="Abhishek" class="team-member-photo">
+        <p class="team-member-details">Team Member / API Management: Abhishek Kumar</p>
+      </div>
+      
+      <div class="team-member">
+        <img src="../AboutUs/Team/anurag1.jpg" alt="Anurag Saket" class="team-member-photo">
+        <p class="team-member-details">Team Member / Database Management: Anurag Saket</p>
+      </div>
+      
+      <div class="team-member">
+        <img src="../AboutUs/Team/anuj.jpg" alt="Anuj Raghuwanshi" class="team-member-photo">
+        <p class="team-member-details">Team Member / IOT Implementation: Anuj Raghuwanshi</p>
+      </div>
+    </div>
+  </div>
+
+ <!-- <script src="about.js"></script> -->
+ <script>
+     function redirectToSignUp() {
+    window.location.href = "../SignUp/sign-up.html";
+  }
+  function redirectToHome() {
+    window.location.href = "../index.html";
+  }
+  function redirectToMap() {
+    window.location.href = "../LargeMap.html";
+  }
+  function redirectToFAQ() {
+    window.location.href = "../FAQ/faq.html";
+  }
+
+  window.onload = function() {
+      var loggedIn = getCookie("loggedIn");
+      var userContainer = document.querySelector('.user-container');
+      var signUpBtn = document.querySelector('.signup-btn');
+      if (loggedIn === "true") {
+          signUpBtn.style.display = "none";
+          userContainer.style.display = "block";
+      } else {
+          signUpBtn.style.display = "block";
+          userContainer.style.display = "none";
+      }
+  }
+
+  function getCookie(name) {
+      var cookieArr = document.cookie.split(';');
+      for(var i = 0; i < cookieArr.length; i++) {
+          var cookiePair = cookieArr[i].split('=');
+          if(name == cookiePair[0].trim()) {
+              return decodeURIComponent(cookiePair[1]);
+          }
+      }
+      return null;
+  }
+
+  function setCookie(name, value) {
+      document.cookie = name + "=" + value + ";path=/";
+  }
+
+  function clearCookie(name) {
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+  }
+
+  function logout() {
+      clearCookie("loggedIn");
+      window.location.reload();
+  }
+
+  function profile() {
+      window.location.href="../Account/account.html";
+  }
+
+  function redirectToContact() {
+    window.location.href = "../ContactUs/contact.html";
+  }
+  
+    function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+}
+  
+  function closeSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    sidebar.classList.remove('active');
+  }
+  
+          document.addEventListener('DOMContentLoaded', () => {
+            var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+            if(disclaimer) {
+                disclaimer.remove();
+            }
+        });
+
+ </script>
+
+</body>
+</html>
