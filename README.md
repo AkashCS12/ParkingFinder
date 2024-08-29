@@ -69,15 +69,7 @@ cd ParkingFinder
 3. Trig (Trigger): Connect to a digital pin on the NodeMCU, D1.
 4. Echo: Connect to another digital pin on the NodeMCU, D2.
 
-+-------------------+                 +------------------------+
-| ESP8266 NodeMCU   |                 | HC-SR04 Ultrasonic      |
-|                   |                 | Sensor                 |
-|                   |                 |                        |
-|        3.3V  ---- |---------------->| VCC                    |
-|        GND   ---- |---------------->| GND                    |
-|        D1    ---- |---------------->| Trig (Trigger)         |
-|        D2    ---- |---------------->| Echo                   |
-+-------------------+                 +------------------------+
+![Circuit](./Resources/circuit.jpg)
 
 
 ## Usage
