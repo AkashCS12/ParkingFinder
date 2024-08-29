@@ -1,7 +1,5 @@
 # Parking Finder
 
-![Parking Finder](./Resources/parkinglogo.jpeg)
-
 ## Introduction
 
 Welcome to **Parking Finder**, a web-based application designed to help users find nearby parking spots. This project also integrates IoT devices to provide real-time status updates on parking slot availability. The website was created by **Akash Gupta** using a combination of modern web technologies and tools.
