@@ -1,6 +1,6 @@
 # Parking Finder
 
-![Parking Finder](./Resources/parkingfinderapp.jpeg)
+![Parking Finder](./Resources/parkinglogo.jpeg)
 
 ## Introduction
 
