@@ -1,6 +1,6 @@
 # Parking Finder
 
-![Parking Finder](https://github.com/AkashCS12/ParkingFinder/tree/main/Resources/parkingfinderapp.jpeg)
+![Parking Finder](./Resources/parkingfinderapp.jpeg)
 
 ## Introduction
 
