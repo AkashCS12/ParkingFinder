@@ -69,7 +69,7 @@ cd ParkingFinder
 3. Trig (Trigger): Connect to a digital pin on the NodeMCU, D1.
 4. Echo: Connect to another digital pin on the NodeMCU, D2.
 
-![Circuit](./Resources/circuit.jpg)
+<img src="./Resources/circuit.jpg" alt="Circuit Diagram" width="400"/>
 
 
 ## Usage
