@@ -53,6 +53,33 @@ cd ParkingFinder
 3. **Mapbox API Key:**  
    Add your Mapbox API key in `index.html` and `script.js`.
 
+## IOT Implementation
+
+### Components Needed
+
+1. ESP8266 NodeMCU
+2. HC-SR04 Ultrasonic Sensor
+3. Jumper wires (or Solder Wires)
+4. Bread Board [Optional]
+
+### Wiring Diagram
+
+1. VCC: Connect to the 3.3V pin on the NodeMCU.
+2. GND: Connect to a GND pin on the NodeMCU.
+3. Trig (Trigger): Connect to a digital pin on the NodeMCU, D1.
+4. Echo: Connect to another digital pin on the NodeMCU, D2.
+
++-------------------+                 +------------------------+
+| ESP8266 NodeMCU   |                 | HC-SR04 Ultrasonic      |
+|                   |                 | Sensor                 |
+|                   |                 |                        |
+|        3.3V  ---- |---------------->| VCC                    |
+|        GND   ---- |---------------->| GND                    |
+|        D1    ---- |---------------->| Trig (Trigger)         |
+|        D2    ---- |---------------->| Echo                   |
++-------------------+                 +------------------------+
+
+
 ## Usage
 
 1. Open your web browser and navigate to the project directory.
