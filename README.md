@@ -66,8 +66,8 @@ cd ParkingFinder
 
 1. VCC: Connect to the 3.3V pin on the NodeMCU.
 2. GND: Connect to a GND pin on the NodeMCU.
-3. Trig (Trigger): Connect to a digital pin on the NodeMCU, D1.
-4. Echo: Connect to another digital pin on the NodeMCU, D2.
+3. Trig (Trigger): Connect to a digital pin on the NodeMCU, D6.
+4. Echo: Connect to another digital pin on the NodeMCU, D5.
 
 <img src="./Resources/circuit.jpg" alt="Circuit Diagram" width="600" height="400"/>
 
