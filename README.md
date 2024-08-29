@@ -1,6 +1,6 @@
 # Parking Finder
 
-![Parking Finder](https://parkingfinder.host/images/parking_finder_banner.jpg)
+![Parking Finder](https://github.com/AkashCS12/ParkingFinder/tree/main/Resources/parkingfinderapp.jpeg)
 
 ## Introduction
 
