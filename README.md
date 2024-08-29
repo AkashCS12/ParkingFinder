@@ -64,6 +64,8 @@ cd ParkingFinder
 
 ### Wiring Diagram
 
+Download Arduino Sketch from Repository [Sketch](parkingfinder.ino)
+
 1. VCC: Connect to the 3.3V pin on the NodeMCU.
 2. GND: Connect to a GND pin on the NodeMCU.
 3. Trig (Trigger): Connect to a digital pin on the NodeMCU, D6.
