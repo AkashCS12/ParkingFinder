@@ -77,7 +77,7 @@ Download Arduino Sketch from Repository [Sketch](parkingfinder.ino)
 3. Trig (Trigger): Connect to a digital pin on the NodeMCU, D6.
 4. Echo: Connect to another digital pin on the NodeMCU, D5.
 
-<img src="./Resources/circuit.jpg" alt="Circuit Diagram" width="600" height="400"/>
+<img src="./Resources/IOT.jpg" alt="Circuit Diagram" width="600" height="400"/>
 
 
 ## Usage
