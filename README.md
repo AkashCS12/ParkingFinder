@@ -1,5 +1,11 @@
 # Parking Finder
 
+##V1.1 RELEASE
+
+Added ConfigUpdater.exe and modified all required files to work with this program. This simplifes the project and makes it easy to run instead of manually making changes to each file. Just run ConfigUpdater.exe and enter all required information and it will update the config file according to the data you enter. 
+
+###NOTE: .jar , .java and .class file for ConfigUpdater are in ConfigUpdater folder so if anyone want to run this in a different Operating System, they can update the file accordingly.
+
 ## Introduction
 
 Welcome to **Parking Finder**, a web-based application designed to help users find nearby parking spots. This project also integrates IoT devices to provide real-time status updates on parking slot availability. The website was created by **Akash Gupta** using a combination of modern web technologies and tools.
