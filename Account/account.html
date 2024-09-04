@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Parking Finder</title>
+ <!-- <link rel="stylesheet" href="account.css"> -->
+ <style>
+     body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000;
+    color: #fff;
+    background-image: url('../Resources/bg6.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+  
+  .container {
+    padding: 2cm;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1cm;
+  }
+  
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    font-weight: normal;
+    color: #fff;
+    margin: 0;
+  }
+  
+  nav {
+    text-align: center;
+  }
+  
+  .nav-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: 900;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0.5cm 15px 0 5px;
+  }
+  
+  .signup-btn {
+    border: 3px solid #fff;
+    border-radius: 50px;
+    background: transparent;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px 25px;
+    cursor: pointer;
+    margin-left: -1.5cm;
+  }
+  
+  .user-info-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 200px auto 0;
+    max-width: 600px;
+  }
+  
+  .user-info {
+    margin-top: 50px;
+  }
+  
+  .user-info p {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .user-info strong {
+    font-weight: bold;
+  }
+
+  .delete-button {
+    background-color: #ff0000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .delete-button:hover {
+    background-color: #b00c0c;
+  } 
+  .user-info strong {
+    margin-right: 10px;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    left: -50%;
+  }
+  .dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: white;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 100px;
+  }
+  .dropdown-content button:hover {
+    background-color: #f1f1f1;
+  }
+  .user-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .user-icon:hover .dropdown-content {
+    display: block;
+  }
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  .popup-content {
+    background-color: #fefefe;
+    margin: 0 auto;
+    margin-top: 21%;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+    position: relative;
+  }
+  .popup-content input[type="text"],
+  .popup-content input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  .popup-content label {
+    font-weight: bold;
+    color: black;
+  }
+  .popup-content button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .popup-content button:hover {
+    background-color: #45a049;
+  }
+  .close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .error {
+    color: red;
+    font-size: 12px;
+    display: none;
+  }
+  .waiting-popup {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  .waiting-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  #loadingModal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .modal-content {
+    background-color: #00000094;
+    border-color: #f3f3f3;
+    border-radius: 5px;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    position: relative;
+    margin-top: 14px;
+  }
+  .loader div {
+    width: 10px;
+    height: 10px;
+    background-color: #3498db;
+    border-radius: 50%;
+    animation: jump 1.5s infinite ease-in-out;
+    margin-right: 8px;
+    margin-top: 0;
+  }
+  .loader div:last-child {
+    margin-right: 0;
+  }
+  .loader div:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .loader div:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  .loader div:nth-child(3) {
+    animation-delay: 1s;
+  }
+  @keyframes jump {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  .please-wait {
+    color: rgb(7, 7, 7);
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .change{
+    color: black;
+  }
+
+#successPopup {
+display: none;
+position: fixed;
+z-index: 9999;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+}
+
+.success-content {
+background-color: #00000094;
+border-color: #f3f3f3;
+border-radius: 5px;
+width: 200px;
+padding: 20px;
+text-align: center;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.success-content p strong {
+color: black;
+font-weight: bold;
+}
+
+.success-button {
+background-color: #4CAF50;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+width: 100%;
+margin-top: 10px;
+}
+
+.success-button:hover {
+background-color: #45a049;
+}
+
+  h2, .popup-content h2 {
+    color: black;
+  }
+
+  .info{
+    padding-left: 150px;
+    margin-bottom: 80px;
+  }
+
+  a
+  {
+    padding-left: 10px;
+    color:rgba(255, 0, 0, 0.674);
+  }
+  
+  .confirm{
+    color: red;
+    font-weight: bold;
+  }
+
+  .change{
+    font-weight: bold;
+  }
+
+  .bookings-container {
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 5px;
+    max-width: 600px;
+  }
+  
+
+.b-info {
+  padding-left: 200px;
+  margin-bottom: 40px;
+}
+
+.bookings-info p {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.bookings-info strong {
+  margin-right: 10px;
+}
+
+.delete-booking-button {
+  background-color: #ff0000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.delete-booking-button:hover {
+  background-color: #b00c0c;
+}
+
+.conf {
+  color: black;
+  font-weight: bold;
+  
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1033px) and (max-width: 1300px) {
+  .nav-button {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (max-width: 432px) {
+  .suggestions {
+    max-height: 80px;
+    width: 80%;
+    left: 50%;
+    margin-top: 45px !important;
+    border-radius: 10px;
+    overflow-y: scroll;
+  }
+  
+  .suggestion-item {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  
+  .nav-button.hamburger {
+    display: none;
+  }
+  .sidebar-content{
+    display: none;
+  }
+
+  .close-btn{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  .user-info-container,
+  .bookings-container {
+    padding: 10px;
+    margin: 100px auto 0;
+    max-width: 90%;
+  }
+
+  .b-info {
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  .user-info-container .info,
+.bookings-container .b-info {
+  font-size: 20px;
+}
+
+  .user-info p,
+  .bookings-info p {
+    font-size: 14px;
+  }
+
+  .delete-button {
+    font-size: 18px;
+  }
+  
+
+  .delete-booking-button {
+    font-size: 10px; 
+    padding: 8px 16px;
+    margin-top: 10px;
+  }
+
+  .nav-button,
+  .logo,
+  body,
+  .container {
+    font-size: 18px;
+    padding: 8px 15px;
+    width: auto;
+    margin-left: 0;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-button {
+    margin: 0.5cm 0;
+  }
+
+  .user-container {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #333;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+
+  .sidebar-content {
+    padding: 30px 20px;
+  }
+  
+  nav {
+    display: none;
+  }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin: 0.5cm 0;
+  }
+
+  header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 900;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 1cm 15px 0 10px;
+}
+
+.sidebar-content button {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #555;
+}
+
+.sidebar-content button:last-child {
+  border-bottom: none;
+}
+
+.sidebar-content button:hover {
+  background-color: #333;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+body {
+  scrollbar-width: thin; 
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+ </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Orbitron:800">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <button class="nav-button hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="logo">Parking Finder</div>
+      <nav>
+          <button class="nav-button" onclick="redirectToHome()">Home</button>
+          <button class="nav-button" onclick="redirectToMap()">Book Parking</button>
+          <button class="nav-button" onclick="redirectToAbout()">About Us</button>
+          <button class="nav-button" onclick="redirectToContact()">Contact Us</button>
+          <button class="nav-button" onclick="redirectToFAQ()">FAQ</button>
+      </nav>
+      <div class="user-container">
+          <div class="user-icon">
+              <img src="../Resources/account.png" alt="User Icon">
+              <div class="dropdown-content">
+                  <button onclick="logout()">Logout</button>
+              </div>
+          </div>
+      </div>
+  </header>
+  <div class="sidebar" id="sidebar">
+      <button class="close-btn" onclick="closeSidebar()">×</button> 
+      <div class="sidebar-content">
+        <button class="nav-button" onclick="redirectToHome()">Home</button>
+        <button class="nav-button" onclick="redirectToMap()">Book Parking</button>
+        <button class="nav-button" onclick="redirectToAbout()">About Us</button>
+        <button class="nav-button" onclick="redirectToContact()">Contact Us</button>
+        <button class="nav-button" onclick="redirectToFAQ()">FAQ</button>
+      </div>
+    </div>
+
+    <div class="user-info-container">
+      <h1 class="info">User Information</h1>
+      <div class="user-info">
+        <p><strong>Email:</strong> <span id="email"></span> <a href="#" onclick="changeData('email')">Change</a></p>
+        <p><strong>Username:</strong> <span id="username"></span> <a href="#" onclick="changeData('username')">Change</a></p>
+        <p><strong>Phone:</strong> <span id="phone"></span> <a href="#" onclick="changeData('phone')">Change</a></p>
+        <button class="delete-button" onclick="deleteAccount()">Delete Account</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bookings-container">
+    <h1 class="b-info">Bookings</h1>
+    <div class="bookings-info-container">
+      <div class="bookings-info">
+      </div>
+    </div>
+  </div>
+
+  <div id="myPopup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2 id="changeHeading" style="text-align: center;"></h2>
+      <label id="fieldLabel" for="newField">New Field:</label>
+      <input type="text" id="newField" placeholder="Enter New Field">
+      <div id="fieldError" class="error"></div>
+      <label for="password">Enter current password:</label>
+      <input type="password" id="password" placeholder="Enter Password">
+      <div id="passwordError" class="error"></div>
+      <button onclick="submitChanges()">Submit</button>
+    </div>
+  </div>
+
+  <div id="loadingModal" class="waiting-popup">
+    <div class="waiting-content">
+      <p class="please-wait">Please wait while we process your request...</p>
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+<div id="successPopup" class="waiting-popup">
+  <div class="waiting-content">
+    <p class="change"><strong>Credentials changed successfully!</strong></p>
+    <button onclick="closeSuccessPopup()" class="success-button">OK</button>
+  </div>
+</div>
+
+<div id="deleteConfirmationModal" class="popup">
+  <div class="popup-content">
+      <span class="close" onclick="document.getElementById('deleteConfirmationModal').style.display = 'none';">&times;</span>
+      <h2>Confirm Account Deletion</h2>
+      <p class="confirm">Are you sure you want to delete your account? This action cannot be undone.</p>
+      <input type="password" id="deletePassword" placeholder="Enter your password">
+      <div class="error" id="deletePasswordError"></div>
+      <button id="deleteAccountButton">Delete Account</button>
+      <button id="deleteCancelButton">Cancel</button>
+  </div>
+</div>
+
+<div id="deleteConfirmationPopup" class="popup">
+  <div class="popup-content">
+    <h2 class="conf">Are you sure you want to cancel this booking?</h2>
+    <button id="confirmDeleteButton">Yes</button>
+    <button id="cancelDeleteButton">No</button>
+  </div>
+</div>
+
+
+<div id="successDeletePopup" class="waiting-popup">
+  <div class="waiting-content">
+    <p class="change"><strong>Account deleted successfully. <br><br>Redirecting to Home...</strong></p>
+  </div>
+</div>
+
+
+
+<!-- <script src="account.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+    window.onload = function() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            var userData = JSON.parse(this.responseText);
+            document.getElementById('email').textContent = userData.email;
+            document.getElementById('username').textContent = userData.username;
+            document.getElementById('phone').textContent = userData.phone;
+        }
+    };
+    xhr.open("GET", "getData.php", true);
+    xhr.send();
+
+    function fetchBookings() {
+        var bookingsXhr = new XMLHttpRequest();
+        bookingsXhr.onreadystatechange = function() {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    var bookingsData = JSON.parse(this.responseText);
+                    updateBookingsContainer(bookingsData);
+                } else {
+                    console.error("Failed to fetch bookings: " + this.statusText);
+                }
+            }
+        };
+        bookingsXhr.open("GET", "getBookings.php", true);
+        bookingsXhr.send();
+    }
+
+    fetchBookings();
+
+    setInterval(fetchBookings, 1000);
+}
+
+function updateBookingsContainer(bookingsData) {
+    var bookingsContainer = document.querySelector('.bookings-info');
+    bookingsContainer.innerHTML = '';
+    if (bookingsData.length > 0) {
+        bookingsData.forEach(function(booking) {
+            var bookingElement = document.createElement('div');
+            var location = booking.location.replace(/_/g, ' ').toLowerCase().replace(/(^|\s)\S/g, function(firstLetter) {
+                return firstLetter.toUpperCase();
+            });
+
+            var bookingTime = moment(booking.time);
+            var timeout = moment(booking.timeout);
+
+            var timeDiff = moment.duration(timeout.diff(bookingTime));
+
+            var days = timeDiff.days();
+            var hours = timeDiff.hours();
+            var minutes = timeDiff.minutes();
+            var seconds = timeDiff.seconds();
+
+            var timeLeftStr = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+            bookingElement.innerHTML = `
+                <p><strong>Location:</strong> ${location}</p>
+                <p><strong>Slot:</strong> ${booking.slot}</p>
+                <p><strong>Current Time:</strong> ${bookingTime.format('YYYY-MM-DD HH:mm:ss')}</p>
+                <p><strong>Booking Till:</strong> ${timeout.format('YYYY-MM-DD HH:mm:ss')}</p>
+                <p><strong>Time Left:</strong> ${timeLeftStr}</p>
+                <button class="delete-booking-button" data-booking-id="${booking.id}">Cancel Booking</button>
+            `;
+            bookingsContainer.appendChild(bookingElement);
+
+            var deleteButton = bookingElement.querySelector('.delete-booking-button');
+            deleteButton.addEventListener('click', function() {
+                var bookingId = booking.id;
+                showDeleteConfirmation(bookingId);
+            });
+        });
+    } else {
+        var noBookingsMessage = document.createElement('p');
+        noBookingsMessage.textContent = 'No Bookings';
+        noBookingsMessage.style.fontWeight = 'bold';
+        noBookingsMessage.style.textAlign = 'center';
+        noBookingsMessage.style.marginRight = '30px';
+        bookingsContainer.appendChild(noBookingsMessage);
+    }
+}
+
+function showDeleteConfirmation(bookingId) {
+    var popup = document.getElementById('deleteConfirmationPopup');
+    popup.style.display = 'block';
+
+    var confirmDeleteButton = document.getElementById('confirmDeleteButton');
+    var cancelDeleteButton = document.getElementById('cancelDeleteButton');
+
+    confirmDeleteButton.onclick = function() {
+        deleteBooking(bookingId);
+        popup.style.display = 'none';
+    };
+
+    cancelDeleteButton.onclick = function() {
+        popup.style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+        if (event.target == popup) {
+            popup.style.display = 'none';
+        }
+    };
+}
+
+function deleteBooking(bookingId) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState === 4) {
+            if (this.status === 200) {
+                var response = JSON.parse(this.responseText);
+                if (response.success) {
+                    window.location.reload();
+                } else {
+                    console.error("Failed to delete booking: " + response.error);
+                }
+            }
+        }
+    };
+    xhr.open("POST", "cancelBooking.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("tid=" + encodeURIComponent(bookingId));
+}
+
+
+
+function clearCookie(name) {
+  document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+}
+
+function logout() {
+  clearCookie("loggedIn");
+  window.location.href = "../index.html";
+}
+
+function redirectToHome() {
+  window.location.href = "../index.html";
+}
+
+function redirectToAbout() {
+  window.location.href = "../AboutUs/about.html";
+}
+
+function redirectToMap() {
+  window.location.href = "../LargeMap.html";
+}
+
+function redirectToContact() {
+  window.location.href = "../ContactUs/contact.html";
+}
+
+function redirectToFAQ() {
+  window.location.href = "../FAQ/faq.html";
+}
+
+function changeData(field) {
+  var modal = document.getElementById("myPopup");
+  var changeHeading = document.getElementById("changeHeading");
+  var fieldLabel = document.getElementById("fieldLabel");
+  var newField = document.getElementById("newField");
+  var password = document.getElementById("password");
+  var passwordError = document.getElementById("passwordError");
+  var fieldError = document.getElementById("fieldError");
+
+  changeHeading.textContent = "Change " + field.charAt(0).toUpperCase() + field.slice(1);
+
+  fieldLabel.textContent = "New " + field.charAt(0).toUpperCase() + field.slice(1) + ":";
+  newField.placeholder = "Enter New " + field.charAt(0).toUpperCase() + field.slice(1);
+  password.value = "";
+  passwordError.textContent = "";
+  fieldError.textContent = "";
+
+  modal.style.display = "block";
+}
+
+function closePopup() {
+  var modal = document.getElementById("myPopup");
+  modal.style.display = "none";
+}
+
+function submitChanges() {
+  document.getElementById("loadingModal").style.display = "block";
+
+  var field = document.getElementById("fieldLabel").textContent.replace("New ", "").replace(":", "").toLowerCase();
+  var newField = document.getElementById("newField").value.trim();
+  var password = document.getElementById("password").value.trim();
+  var passwordError = document.getElementById("passwordError");
+  var fieldError = document.getElementById("fieldError");
+
+  if (newField === "") {
+      fieldError.textContent = "Please Input Data";
+      fieldError.style.display = "block";
+      document.getElementById("loadingModal").style.display = "none";
+      return;
+  } else {
+      fieldError.textContent = "";
+  }
+
+  if (password === "") {
+      passwordError.textContent = "Password cannot be empty.";
+      passwordError.style.display = "block";
+      document.getElementById("loadingModal").style.display = "none";
+      return;
+  } else {
+      passwordError.textContent = "";
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+      if (this.readyState === 4) {
+          document.getElementById("loadingModal").style.display = "none";
+          if (this.status === 200) {
+              var response = JSON.parse(this.responseText);
+              if (response.success) {
+                  document.getElementById("successPopup").style.display = "block";
+                  setTimeout(function() {
+                      window.location.href = "../index.html";
+                  }, 3000);
+              } else {
+                  passwordError.textContent = response.error;
+                  passwordError.style.display = "block";
+              }
+          }
+      }
+  };
+  xhr.open("POST", "updateData.php", true);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.send("field=" + field + "&value=" + encodeURIComponent(newField) + "&password=" + encodeURIComponent(password));
+}
+
+function closeSuccessPopup() {
+  document.getElementById("successPopup").style.display = "none";
+  window.location.reload();
+}
+
+function deleteAccount() {
+  var deleteConfirmationModal = document.getElementById("deleteConfirmationModal");
+  deleteConfirmationModal.style.display = "block";
+
+  var deleteAccountButton = document.getElementById("deleteAccountButton");
+  var deletePasswordInput = document.getElementById("deletePassword");
+  var deletePasswordError = document.getElementById("deletePasswordError");
+
+  deleteAccountButton.onclick = function() {
+      var password = deletePasswordInput.value.trim();
+      if (password !== "") {
+          document.getElementById("loadingModal").style.display = "block";
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+              if (this.readyState === 4) {
+                  document.getElementById("loadingModal").style.display = "none";
+                  if (this.status === 200) {
+                      var response = JSON.parse(this.responseText);
+                      if (response.success) {
+                          document.getElementById("successDeletePopup").style.display = "block";
+                          setTimeout(function() {
+                            logout();
+                          }, 3000);
+                      } else {
+                          deletePasswordError.textContent = response.error;
+                          deletePasswordError.style.display = "block";
+                      }
+                  }
+              }
+          };
+          xhr.open("POST", "deleteAccount.php", true);
+          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhr.send("password=" + encodeURIComponent(password));
+      } else {
+          deletePasswordError.textContent = "Password cannot be empty.";
+          deletePasswordError.style.display = "block";
+      }
+  }
+
+  var deleteCancelButton = document.getElementById("deleteCancelButton");
+  deleteCancelButton.onclick = function() {
+      deleteConfirmationModal.style.display = "none";
+      deletePasswordError.textContent = "";
+      deletePasswordInput.value = "";
+  }
+}
+
+function toggleSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+}
+  
+  function closeSidebar() {
+    var sidebar = document.getElementById('sidebar');
+    sidebar.classList.remove('active');
+  }
+  
+          document.addEventListener('DOMContentLoaded', () => {
+            var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+            if(disclaimer) {
+                disclaimer.remove();
+            }
+        });
+
+</script>
+
+</body>
+</html>

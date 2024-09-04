@@ -1,0 +1,161 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000;
+  color: #fff;
+  background-image: url('../Resources/bg6.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 2cm;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1cm;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 36px;
+  font-weight: normal;
+  color: #fff;
+  margin: 0;
+}
+
+nav {
+  text-align: center;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 900;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 0.5cm 15px 0 5px;
+}
+
+.signup-btn {
+  border: 3px solid #fff;
+  border-radius: 50px;
+  background: transparent;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 10px 25px;
+  cursor: pointer;
+  margin-left: -1.5cm;
+}
+
+.about-container {
+  text-align: center;
+  margin-top: 2cm;
+  padding: 0 2cm;
+}
+
+.about-text {
+  font-size: 24px;
+  line-height: 1.6;
+  margin-bottom: 2cm;
+  padding-bottom: 0.5cm;
+  color: #ddd;
+}
+
+.objective-heading {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1cm;
+}
+
+.objective-list {
+  font-size: 20px;
+  color: #ddd;
+  text-align: left;
+  margin-left: 0;
+  padding-left: 2cm;
+  border-left: 3px solid #fff;
+  border-right: 3px solid #fff;
+  border-top: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  padding-bottom: 2cm;
+  padding-top: 2cm;
+  background: rgba(0, 0, 0, 0.279);
+}
+
+.team-members {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2cm;
+}
+
+.team-member {
+  text-align: center;
+  width: 23%;
+}
+
+.team-member-photo {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 1cm;
+  border-radius: 30%;
+}
+
+
+.team-member-details {
+  font-size: 18px;
+  color: #ddd;
+  font-weight: 900;
+  padding-bottom: 4cm;
+}
+
+.team-heading {
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1cm;
+  padding-top: 4cm;
+  padding-bottom: 2cm;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+  left: -50%;
+}
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: white;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 100px;
+}
+.dropdown-content button:hover {
+  background-color: #f1f1f1;
+}
+.user-icon {
+position: relative;
+display: inline-block;
+cursor: pointer;
+}
+.user-icon:hover .dropdown-content {
+display: block;
+}

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- <link rel="stylesheet" href="sign-in.css"> -->
+  <style>
+      body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000;
+  color: #fff;
+  background-image: url('../Resources/bg6.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+  
+  .container {
+    padding: 2cm;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2cm;
+  }
+  
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    font-weight: normal;
+    color: #fff;
+    margin: 0;
+  }
+  
+  nav {
+    text-align: center;
+  }
+  
+  .nav-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: 900;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 1cm 15px 0 5px;
+  }
+  
+  .login-container {
+    text-align: center;
+    margin-top: 40vh;
+    transform: translateY(-50%);
+  }
+  
+  .login-form {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    padding: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  .login-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group input {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    outline: none;
+  }
+  
+  .input-group input:focus {
+    border-color: #3f80ea;
+  }
+  
+  .login-btn {
+    border: none;
+    background-color: #3f80ea;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .login-btn:hover {
+    background-color: #2c63b6;
+  }
+  
+  .signup-link {
+    margin-top: 20px;
+  }
+  
+  .signup-link p {
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .signup-link a {
+    color: #3f80ea;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .signup-link a:hover {
+    color: #2c63b6;
+  }
+  
+  .signup-link button {
+    margin-top: 10px;
+  }
+  
+  .login-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .login-btn {
+    margin-top: 10px;
+  }
+
+  .popup-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 25px;
+  }
+  
+  .forgot{
+    color:red;
+  }
+  .forgot:hover{
+    color:rgb(194, 15, 15);
+  }
+
+#submit-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#submit-btn:hover {
+  background-color: #45a049;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1033px) and (max-width: 1300px) {
+  .nav-button {
+    margin-left: 100px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .nav-button.hamburger {
+    display: none;
+  }
+  .sidebar-content{
+    display: none;
+  }
+
+  .close{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  .nav-button,
+  .logo,
+  body,
+  .container {
+    font-size: 18px;
+    padding: 8px 15px;
+    width: auto;
+    margin-left: 0;
+  }
+
+  .nav-button {
+    margin: 0.5cm 0;
+  }
+
+  .user-container {
+    display: none;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #333;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+
+  .sidebar-content {
+    padding: 30px 20px;
+  }
+  
+  nav {
+    display: none;
+  }
+  header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .logo {
+    margin: 0.5cm 0;
+  }
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 900;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 1cm 15px 0 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+body {
+  scrollbar-width: thin; 
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #333;
+}
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Orbitron:800">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <button class="nav-button hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="logo">Parking Finder</div>
+      <nav>
+          <button class="nav-button" onclick="redirectToHome()">Home</button>
+          <button class="nav-button" onclick="redirectToMap()">Book Parking</button>
+          <button class="nav-button" onclick="redirectToAbout()">About Us</button>
+          <button class="nav-button" onclick="redirectToContact()">Contact Us</button>
+          <button class="nav-button" onclick="redirectToFAQ()">FAQ</button>
+      </nav>
+  </header>
+  <div class="sidebar" id="sidebar">
+      <button class="close" onclick="closeSidebar()">×</button> 
+      <div class="sidebar-content">
+        <button class="nav-button" onclick="redirectToHome()">Home</button>
+        <button class="nav-button" onclick="redirectToMap()">Book Parking</button>
+        <button class="nav-button" onclick="redirectToAbout()">About Us</button>
+        <button class="nav-button" onclick="redirectToContact()">Contact Us</button>
+        <br>
+        <button class="nav-button" onclick="redirectToFAQ()">FAQ</button>
+      </div>
+    </div>
+    <div class="login-container">
+      <form class="login-form" id="loginForm">
+        <h2>Login</h2>
+        <div class="input-group">
+          <input type="text" id="usernameOrEmail" name="usernameOrEmail" placeholder="Username or Email">
+        </div>
+        <div class="input-group">
+          <input type="password" id="password" name="password" placeholder="Password">
+        </div>
+        <div class="forgot-password">
+          <a class="forgot" href="#" onclick="showForgotPasswordPopup()">Forgot Password?</a>
+        </div>
+        <div class="login-btn-container">
+          <span id="error-msg" style="color: red; display: block; margin-bottom: 10px;"></span>
+          <button type="button" class="login-btn" onclick="login()">Login</button>
+        </div>
+      </form>
+      <div class="signup-link">
+        <p>Don't have an account? <a href="../SignUp/sign-up.html" style="color: red;">Sign Up</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-container" id="forgotPasswordPopup">
+    <span class="close-btn" onclick="closeForgotPasswordPopup()">&times;</span>
+    <h2>Forgot Password</h2>
+    <form id="forgotPasswordForm">
+      <div class="input-group">
+        <input type="text" id="forgotPasswordEmail" name="email" placeholder="Email">
+        <span id="email-error" style="color: red;"></span>
+      </div>
+      <button type="button" onclick="sendOTP()" id="send-otp-btn">Send OTP</button>
+      <div id="otp-section" style="display: none;">
+        <div class="input-group">
+          <input type="text" id="otp" name="otp" placeholder="OTP">
+          <span id="otp-error" style="color: red;"></span>
+        </div>
+        <div class="input-group">
+          <input type="password" id="newPassword" name="newPassword" placeholder="New Password">
+          <span id="new-password-error" style="color: red;"></span>
+        </div>
+      </div>
+      <button type="button" onclick="submitNewPassword()" id="submit-btn" style="display: none;">Submit</button>
+    </form>
+  </div>
+
+  <div class="popup-container" id="popupContainer">
+    <p>Signed in Successfully, Redirecting to Dashboard</p>
+    <div id="countdown"></div>
+  </div>
+
+  <div class="popup-container" id="successPopup">
+    <p>Password Updated Successfully</p>
+  </div>
+  
+
+ <!-- <script src="sign-in.js"></script> -->
+ <script>
+     function login() {
+  var usernameOrEmail = document.getElementById("usernameOrEmail").value;
+  var password = document.getElementById("password").value;
+  var errorMsg = document.getElementById("error-msg");
+  var loginBtn = document.querySelector(".login-btn");
+
+  loginBtn.disabled = true;
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "data.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+          if (xhr.responseText.trim() === "success") {
+              errorMsg.textContent = "";
+              showPopup();
+          } else {
+              errorMsg.textContent = "Invalid email or password";
+              loginBtn.disabled = false;
+          }
+      }
+  };
+  xhr.send("usernameOrEmail=" + encodeURIComponent(usernameOrEmail) + "&password=" + encodeURIComponent(password));
+}
+
+function handleKeyPress(event) {
+  if (event.keyCode === 13) {
+      login();
+  }
+}
+
+document.getElementById("usernameOrEmail").addEventListener("keypress", handleKeyPress);
+document.getElementById("password").addEventListener("keypress", handleKeyPress);
+
+function showPopup() {
+  var popupContainer = document.getElementById("popupContainer");
+  popupContainer.style.display = "block";
+
+  var countdown = document.getElementById("countdown");
+  var seconds = 3;
+  countdown.textContent = seconds + " seconds";
+
+  var timer = setInterval(function() {
+      seconds--;
+      countdown.textContent = seconds + " seconds";
+      if (seconds <= 0) {
+          clearInterval(timer);
+          window.location.href = "../index.html";
+      }
+  }, 1000);
+}
+
+function redirectToHome() {
+  window.location.href = "../index.html";
+}
+
+ function redirectToMap() {
+    window.location.href = "../LargeMap.html";
+  }
+
+function redirectToAbout() {
+  window.location.href = "../AboutUs/about.html";
+}
+
+function redirectToContact() {
+  window.location.href = "../ContactUs/contact.html";
+}
+
+function redirectToFAQ() {
+  window.location.href = "../FAQ/faq.html";
+}
+
+function showForgotPasswordPopup() {
+  document.getElementById("forgotPasswordPopup").style.display = "block";
+}
+
+function sendOTP() {
+  var email = document.getElementById("forgotPasswordEmail").value;
+  var emailError = document.getElementById("email-error");
+  var otpSection = document.getElementById("otp-section");
+  var submitBtn = document.getElementById("submit-btn");
+  var sendOTPBtn = document.getElementById("send-otp-btn");
+
+  emailError.textContent = "";
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "data.php?checkEmail=true&email=" + encodeURIComponent(email), true);
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+          if (xhr.responseText.trim() === "found") {
+              sendOTPByEmail(email);
+              sendOTPBtn.disabled = true;
+              var timerSeconds = 15;
+              var timerInterval = setInterval(function() {
+                  timerSeconds--;
+                  sendOTPBtn.textContent = "Send OTP";
+                  if (timerSeconds <= 0) {
+                      clearInterval(timerInterval);
+                      sendOTPBtn.textContent = "Resend OTP";
+                      sendOTPBtn.disabled = false;
+                  }
+              }, 1000);
+          } else {
+              emailError.textContent = "Email not found";
+          }
+      }
+  };
+  xhr.send();
+}
+
+
+function sendOTPByEmail(email) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "data.php?sendOTP=true&email=" + encodeURIComponent(email), true);
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+          if (xhr.responseText.trim() === "error") {
+              console.log("Error sending OTP");
+          } else {
+              var otpSection = document.getElementById("otp-section");
+              var submitBtn = document.getElementById("submit-btn");
+              otpSection.style.display = "block";
+              submitBtn.style.display = "block";
+          }
+      }
+  };
+  xhr.send();
+}
+
+
+function submitNewPassword() {
+  var otp = document.getElementById("otp").value;
+  var newPassword = document.getElementById("newPassword").value;
+  var otpError = document.getElementById("otp-error");
+  var newPasswordError = document.getElementById("new-password-error");
+
+  otpError.textContent = "";
+  newPasswordError.textContent = "";
+
+  if (otp !== "") {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "data.php?validateOTP=true&enteredOTP=" + encodeURIComponent(otp), true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        if (xhr.responseText.trim() === "valid") {
+          var newPasswordValue = encodeURIComponent(newPassword);
+          var xhrUpdatePassword = new XMLHttpRequest();
+          xhrUpdatePassword.open("GET", "data.php?updatePassword=true&newPassword=" + newPasswordValue, true);
+          xhrUpdatePassword.onreadystatechange = function() {
+            if (xhrUpdatePassword.readyState === 4 && xhrUpdatePassword.status === 200) {
+              var successPopup = document.getElementById("successPopup");
+              successPopup.style.display = "block";
+              setTimeout(function() {
+                successPopup.style.display = "none";
+              }, 2000);
+              closeForgotPasswordPopup();
+            }
+          };
+          xhrUpdatePassword.send();
+        } else {
+          otpError.textContent = "Invalid OTP";
+        }
+      }
+    };
+    xhr.send();
+  } else {
+    otpError.textContent = "Please enter OTP";
+  }
+}
+
+function closeForgotPasswordPopup() {
+  var forgotPasswordPopup = document.getElementById("forgotPasswordPopup");
+  forgotPasswordPopup.style.display = "none";
+}
+
+function toggleSidebar() {
+  var sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('active');
+}
+
+function closeSidebar() {
+  var sidebar = document.getElementById('sidebar');
+  sidebar.classList.remove('active');
+}
+
+function toggleSidebar() {
+  var sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('active');
+}
+
+function closeSidebar() {
+  var sidebar = document.getElementById('sidebar');
+  sidebar.classList.remove('active');
+}
+
+        document.addEventListener('DOMContentLoaded', () => {
+            var disclaimer = document.querySelector("img[alt='www.000webhost.com']");
+            if(disclaimer) {
+                disclaimer.remove();
+            }
+        });
+
+ </script>
+
+</body>
+</html>
